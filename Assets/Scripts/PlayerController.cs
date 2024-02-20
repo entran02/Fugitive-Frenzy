@@ -2,66 +2,93 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class CarController : MonoBehaviour
 {
-    public float speed = 5.0f;
-    public float jumpAmount = 6;
-    public float rotationSpeed = 100.0f; // Speed at which wheels rotate
-    public float steeringAngle = 30.0f; // Max steering angle for the front wheels
+    public float motorForce;
+    public float breakForce;
+    public float maxSteerAngle = 30;
+    public float jumpAmount = 15000;
 
-    public GameObject car_fl_wheel_mesh;
-    public GameObject car_fr_wheel_mesh;
-    public GameObject car_rr_wheel_mesh;
-    public GameObject car_rl_wheel_mesh;
+    public WheelCollider frontLeftWheelCollider;
+    public WheelCollider frontRightWheelCollider;
+    public WheelCollider rearLeftWheelCollider;
+    public WheelCollider rearRightWheelCollider;
 
+    public Transform frontLeftWheelMesh;
+    public Transform frontRightWheeMesh;
+    public Transform rearLeftWheelMesh;
+    public Transform rearRightWheelMesh;
+
+    float horizontalInput;
+    float verticalInput;
+    float currentSteerAngle;
+    float currentbreakForce;
+    bool isBreaking;
     Rigidbody rb;
-    AudioSource jumpSFX;
 
+    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
+    // Update is called once per frame
     void Update()
     {
+        // **fix jumping
         if(Input.GetKeyDown(KeyCode.Space)) {
             if(transform.position.y < 1){
                 rb.AddForce(0, jumpAmount, 0, ForceMode.Impulse);
             }
         }
-
-        if(Input.GetKeyDown(KeyCode.LeftShift)) {
-            speed *= 2;
-        }
-        if(Input.GetKeyUp(KeyCode.LeftShift)) {
-            speed /= 2;
-        }
-
-        // Rotate front wheels for steering
-        float steerDirection = Input.GetAxis("Horizontal") * steeringAngle;
-        car_fl_wheel_mesh.transform.localEulerAngles = new Vector3(0, 0, steerDirection);
-        car_fr_wheel_mesh.transform.localEulerAngles = new Vector3(0, 0, steerDirection);
     }
-
     private void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = -Input.GetAxis("Vertical");
-
-        // Adjusting the force vector to account for the car's rotated orientation
-        Vector3 forceVector = new Vector3(0.0f, 0.0f, moveVertical);
-        rb.AddForce(transform.TransformDirection(forceVector) * speed);
-
-        // Simulate wheel rotation
-        float rotation = moveVertical * rotationSpeed * Time.fixedDeltaTime;
-        RotateWheels(car_fl_wheel_mesh, car_fr_wheel_mesh, car_rr_wheel_mesh, car_rl_wheel_mesh, rotation);
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
+        isBreaking = Input.GetKey(KeyCode.LeftShift);
+        HandleMotor();
+        HandleSteering();
+        UpdateWheels();
     }
 
-    void RotateWheels(GameObject fl, GameObject fr, GameObject rr, GameObject rl, float rotation)
+    private void HandleMotor()
     {
-        fl.transform.Rotate(Vector3.right, rotation);
-        fr.transform.Rotate(Vector3.right, rotation);
-        rr.transform.Rotate(Vector3.right, rotation);
-        rl.transform.Rotate(Vector3.right, rotation);
+        frontLeftWheelCollider.motorTorque = verticalInput * motorForce;
+        frontRightWheelCollider.motorTorque = verticalInput * motorForce;
+        currentbreakForce = isBreaking ? breakForce : 0f;
+        ApplyBreaking();       
+    }
+
+    private void ApplyBreaking()
+    {
+        frontRightWheelCollider.brakeTorque = currentbreakForce;
+        frontLeftWheelCollider.brakeTorque = currentbreakForce;
+        rearLeftWheelCollider.brakeTorque = currentbreakForce;
+        rearRightWheelCollider.brakeTorque = currentbreakForce;
+    }
+
+    private void HandleSteering()
+    {
+        currentSteerAngle = maxSteerAngle * horizontalInput;
+        frontLeftWheelCollider.steerAngle = currentSteerAngle;
+        frontRightWheelCollider.steerAngle = currentSteerAngle;
+    }
+
+    private void UpdateWheels()
+    {
+        UpdateSingleWheel(frontLeftWheelCollider, frontLeftWheelMesh);
+        UpdateSingleWheel(frontRightWheelCollider, frontRightWheeMesh);
+        UpdateSingleWheel(rearRightWheelCollider, rearRightWheelMesh);
+        UpdateSingleWheel(rearLeftWheelCollider, rearLeftWheelMesh);
+    }
+
+    private void UpdateSingleWheel(WheelCollider wheelCollider, Transform wheelTransform)
+    {
+        Vector3 pos;
+        Quaternion rot;
+        wheelCollider.GetWorldPose(out pos, out rot);
+        wheelTransform.rotation = rot;
+        wheelTransform.position = pos;
     }
 }

@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - car_fl_wheel_mesh
+  - car_fr_wheel_mesh
+  - car_rr_wheel_mesh
+  - car_rl_wheel_mesh
   layers:
   - Default
   - TransparentFX
