@@ -76,6 +76,7 @@ PlayerSettings:
   androidMinimumWindowWidth: 400
   androidMinimumWindowHeight: 300
   androidFullscreenMode: 1
+  androidAutoRotationBehavior: 1
   defaultIsNativeResolution: 1
   macRetinaSupport: 1
   runInBackground: 1
@@ -749,11 +750,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: e96af0db-197e-457e-927f-8b5c347169b2
+  cloudProjectId: 24280579-c711-4450-a52d-81f00691b96b
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: level
-  organizationId: mxieee
+  projectName: Fugitive_Frenzy
+  organizationId: unity_89ec1e3c51d7c1052e88
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

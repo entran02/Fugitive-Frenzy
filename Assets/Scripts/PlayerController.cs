@@ -25,11 +25,18 @@ public class CarController : MonoBehaviour
     float currentbreakForce;
     bool isBreaking;
     Rigidbody rb;
+    bool isNitrous = false;
+    float nitrousEndTime = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        frontLeftWheelCollider.mass = 100;
+        frontRightWheelCollider.mass = 100;
+        rearLeftWheelCollider.mass = 50;
+        rearRightWheelCollider.mass = 50;
     }
 
     // Update is called once per frame
@@ -47,6 +54,10 @@ public class CarController : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
         isBreaking = Input.GetKey(KeyCode.LeftShift);
+        if(isNitrous && Time.time > nitrousEndTime) {
+            isNitrous = false;
+            Debug.Log("Nitrous off");
+        }
         HandleMotor();
         HandleSteering();
         UpdateWheels();
@@ -54,8 +65,14 @@ public class CarController : MonoBehaviour
 
     private void HandleMotor()
     {
-        frontLeftWheelCollider.motorTorque = verticalInput * motorForce;
-        frontRightWheelCollider.motorTorque = verticalInput * motorForce;
+        float effectiveMotorForce = motorForce;
+        if(isNitrous) {
+            effectiveMotorForce *= 5;
+        }
+        frontLeftWheelCollider.motorTorque = verticalInput * effectiveMotorForce;
+        frontRightWheelCollider.motorTorque = verticalInput * effectiveMotorForce;
+        rearLeftWheelCollider.motorTorque = verticalInput * effectiveMotorForce * 0.25f;
+        rearRightWheelCollider.motorTorque = verticalInput * effectiveMotorForce * 0.25f;
         currentbreakForce = isBreaking ? breakForce : 0f;
         ApplyBreaking();       
     }
@@ -90,5 +107,10 @@ public class CarController : MonoBehaviour
         wheelCollider.GetWorldPose(out pos, out rot);
         wheelTransform.rotation = rot;
         wheelTransform.position = pos;
+    }
+
+    public void activateNitrous(float duration) {
+        isNitrous = true;
+        nitrousEndTime = Time.time + duration;
     }
 }
