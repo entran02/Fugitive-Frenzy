@@ -8,6 +8,7 @@ TagManager:
   - car_fr_wheel_mesh
   - car_rr_wheel_mesh
   - car_rl_wheel_mesh
+  - section
   layers:
   - Default
   - TransparentFX
