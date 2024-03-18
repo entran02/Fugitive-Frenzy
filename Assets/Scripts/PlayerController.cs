@@ -19,6 +19,8 @@ public class CarController : MonoBehaviour
     public Transform rearLeftWheelMesh;
     public Transform rearRightWheelMesh;
 
+    public GameObject nitrousTrails;
+
     float horizontalInput;
     float verticalInput;
     float currentSteerAngle;
@@ -56,6 +58,7 @@ public class CarController : MonoBehaviour
         isBreaking = Input.GetKey(KeyCode.LeftShift);
         if(isNitrous && Time.time > nitrousEndTime) {
             isNitrous = false;
+            toggleNitrousEffect(false);
             Debug.Log("Nitrous off");
         }
         HandleMotor();
@@ -112,5 +115,13 @@ public class CarController : MonoBehaviour
     public void activateNitrous(float duration) {
         isNitrous = true;
         nitrousEndTime = Time.time + duration;
+        toggleNitrousEffect(true);
+    }
+
+    private void toggleNitrousEffect(bool isOn) {
+        TrailRenderer[] trails = nitrousTrails.GetComponentsInChildren<TrailRenderer>();
+        foreach(TrailRenderer trail in trails) {
+            trail.emitting = isOn;
+        }
     }
 }
