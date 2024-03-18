@@ -27,7 +27,7 @@ public class NitrousScript : MonoBehaviour
             Debug.Log("Nitrous");
             CarController carController = other.GetComponent<CarController>();
             carController.activateNitrous(nitrousDuration);
-            AudioSource.PlayClipAtPoint(nitroSFX, transform.position);
+            AudioSource.PlayClipAtPoint(nitroSFX, Camera.main.transform.position);
 
             gameObject.SetActive(false);
             Destroy(gameObject, 3f);
