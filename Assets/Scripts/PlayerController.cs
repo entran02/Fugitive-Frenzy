@@ -30,9 +30,19 @@ public class CarController : MonoBehaviour
     bool isNitrous = false;
     float nitrousEndTime = 0;
 
+    public AudioClip engineStartSFX;
+    private bool hasStarted = false;
+    public AudioClip engineRunningSFX;
+    public AudioClip brakeSFX;
+
+    public AudioSource carAudioSource;
+
     // Start is called before the first frame update
     void Start()
     {
+        carAudioSource.transform.position = Camera.main.transform.position;
+        PlayEngineStartSFX();
+
         rb = GetComponent<Rigidbody>();
 
         frontLeftWheelCollider.mass = 100;
@@ -60,6 +70,16 @@ public class CarController : MonoBehaviour
             isNitrous = false;
             toggleNitrousEffect(false);
             Debug.Log("Nitrous off");
+        }
+        if (isBreaking) {
+            if (carAudioSource.clip != brakeSFX) {
+                carAudioSource.clip = brakeSFX;
+                carAudioSource.loop = false;
+                carAudioSource.volume = 1f;
+                carAudioSource.Play();
+            }
+        } else if (!carAudioSource.isPlaying && carAudioSource.clip != engineRunningSFX) {
+            PlayEngineRunningSFX();
         }
         HandleMotor();
         HandleSteering();
@@ -122,6 +142,23 @@ public class CarController : MonoBehaviour
         TrailRenderer[] trails = nitrousTrails.GetComponentsInChildren<TrailRenderer>();
         foreach(TrailRenderer trail in trails) {
             trail.emitting = isOn;
+        }
+    }
+
+    private void PlayEngineStartSFX() {
+        carAudioSource.clip = engineStartSFX;
+        carAudioSource.loop = false;
+        carAudioSource.volume = 1f;
+        carAudioSource.Play();
+        hasStarted = true;
+    }
+
+    private void PlayEngineRunningSFX() {
+        if (carAudioSource.clip != engineRunningSFX && hasStarted) {
+            carAudioSource.clip = engineRunningSFX;
+            carAudioSource.loop = true;
+            carAudioSource.volume = 0.1f;
+            carAudioSource.Play();
         }
     }
 }
