@@ -10,6 +10,7 @@ public class EnemyBehavior : MonoBehaviour
      public float maxSpeed = 130;
     public float minDistance = 2;
     public int damageAmount = 34;
+    public AudioClip hitSFX;
     float currentSpeed;
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             var healthManager = other.GetComponent<HealthManager>();
             healthManager.takeDamage(damageAmount);
+            AudioSource.PlayClipAtPoint(hitSFX, Camera.main.transform.position);
         }
     }
 }
