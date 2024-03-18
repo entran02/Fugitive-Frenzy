@@ -62,7 +62,7 @@ public class HealthManager : MonoBehaviour
         {
             health = minHealth;
             Debug.Log("Health is 0");
-            // TODO: Game Over
+            FindObjectOfType<LevelManager>().LevelLost();
         }
     }
 
