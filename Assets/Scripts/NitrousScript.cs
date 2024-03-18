@@ -29,7 +29,8 @@ public class NitrousScript : MonoBehaviour
             carController.activateNitrous(nitrousDuration);
             AudioSource.PlayClipAtPoint(nitroSFX, transform.position);
 
-            // Destroy(gameObject, 3f);
+            gameObject.SetActive(false);
+            Destroy(gameObject, 3f);
         }
         
     }
