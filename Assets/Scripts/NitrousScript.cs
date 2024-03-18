@@ -6,10 +6,11 @@ public class NitrousScript : MonoBehaviour
 {
 
     public float nitrousDuration = 5f;
+    public AudioClip nitroSFX;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -26,8 +27,9 @@ public class NitrousScript : MonoBehaviour
             Debug.Log("Nitrous");
             CarController carController = other.GetComponent<CarController>();
             carController.activateNitrous(nitrousDuration);
+            AudioSource.PlayClipAtPoint(nitroSFX, transform.position);
 
-            Destroy(gameObject);
+            // Destroy(gameObject, 3f);
         }
         
     }

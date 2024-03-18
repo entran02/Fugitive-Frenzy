@@ -8,7 +8,7 @@ using UnityEngine;
 public class GenerateSection : MonoBehaviour
 {
     public int width;
-    public int maxSections = 3;
+    static int maxSections = 5;
     GameObject[] sections;
     static List<GameObject> orderedSections;
     
