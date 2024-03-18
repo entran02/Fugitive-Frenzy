@@ -6,6 +6,7 @@ public class CameraController : MonoBehaviour
 {
     GameObject player;
     Vector3 offset;
+    bool isLookingBack = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,21 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = player.transform.position + offset;
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            isLookingBack = !isLookingBack;
+        }
+
+        if (isLookingBack)
+        {
+            transform.position = player.transform.position - offset;
+            transform.LookAt(player.transform.position);
+            transform.RotateAround(player.transform.position, Vector3.left, 60);
+        }
+        else
+        {
+            transform.position = player.transform.position + offset;
+            transform.LookAt(player.transform.position);
+        }
     }
 }
