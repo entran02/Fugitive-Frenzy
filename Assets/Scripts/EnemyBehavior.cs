@@ -5,9 +5,12 @@ using UnityEngine;
 public class EnemyBehavior : MonoBehaviour
 {
     public Transform player;
-    public float moveSpeed = 10;
+    public float moveSpeed = 90;
+     public float acceleration = 2;
+     public float maxSpeed = 130;
     public float minDistance = 2;
     public int damageAmount = 34;
+    float currentSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,12 +18,14 @@ public class EnemyBehavior : MonoBehaviour
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
         }
+        currentSpeed = moveSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float step = moveSpeed * Time.deltaTime;
+        currentSpeed = Mathf.Min(currentSpeed + (acceleration * Time.deltaTime), maxSpeed);
+        float step = currentSpeed * Time.deltaTime;
         
         float distance = Vector3.Distance(transform.position, player.position);
 

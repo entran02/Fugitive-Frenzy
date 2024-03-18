@@ -150,6 +150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   moveSpeed: 100
+  acceleration: 2
+  maxSpeed: 200
   minDistance: 2
   damageAmount: 34
 --- !u!64 &6790740197127811375
