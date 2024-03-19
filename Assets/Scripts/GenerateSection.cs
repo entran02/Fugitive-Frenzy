@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +7,30 @@ using UnityEngine;
 public class GenerateSection : MonoBehaviour
 {
     public int width;
-    static int maxSections = 5;
+    static int maxSections = 10;
     GameObject[] sections;
     static List<GameObject> orderedSections;
+
+    public GameObject obstaclePrefab;
+    public GameObject nitroPrefab;
+    public float obstacleSpawnChance = 0.4f;
+    public float nitroSpawnChance = 0.3f;
+
+    void SpawnObstacles() {
+        float randomX = Random.Range(-100f, 0f);
+        float randomZ = Random.Range(width / 2, width);
+        if (Random.value < obstacleSpawnChance) {
+            Instantiate(obstaclePrefab, new Vector3(randomX, 0, gameObject.transform.position.z + randomZ), obstaclePrefab.gameObject.transform.rotation);
+        }
+    }
+
+    void SpawnNitro() {
+        float randomX = Random.Range(-100f, 0f);
+        float randomZ = Random.Range(width / 2, width);
+        if (Random.value < nitroSpawnChance) {
+            Instantiate(nitroPrefab, new Vector3(randomX, 0, gameObject.transform.position.z + randomZ), nitroPrefab.gameObject.transform.rotation);
+        }
+    }
     
     // Start is called before the first frame update
     void Start()
@@ -24,6 +44,9 @@ public class GenerateSection : MonoBehaviour
             orderedSections.RemoveAt(0);
             Destroy(first, 1);
         }
+
+        SpawnObstacles();
+        SpawnNitro();
     }
 
     // Update is called once per frame
@@ -33,9 +56,11 @@ public class GenerateSection : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other) {
-        int randomIndex = UnityEngine.Random.Range(0, sections.Length);
-        GameObject section = sections[randomIndex];
-        addSection(section);
+        if (other.gameObject.CompareTag("Player")) {
+            int randomIndex = UnityEngine.Random.Range(0, sections.Length);
+            GameObject section = sections[randomIndex];
+            addSection(section);
+        }
     }
 
     void addSection(GameObject section) {
