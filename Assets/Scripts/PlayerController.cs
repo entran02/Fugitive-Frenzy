@@ -84,6 +84,10 @@ public class CarController : MonoBehaviour
         HandleMotor();
         HandleSteering();
         UpdateWheels();
+
+        if (LevelManager.isGameOver) {
+            carAudioSource.volume = 0;
+        }
     }
 
     private void HandleMotor()
@@ -154,10 +158,10 @@ public class CarController : MonoBehaviour
     }
 
     private void PlayEngineRunningSFX() {
-        if (carAudioSource.clip != engineRunningSFX && hasStarted) {
+        if (carAudioSource.clip != engineRunningSFX && hasStarted && !LevelManager.isGameOver) {
             carAudioSource.clip = engineRunningSFX;
             carAudioSource.loop = true;
-            carAudioSource.volume = 0.1f;
+            carAudioSource.volume = 0.05f;
             carAudioSource.Play();
         }
     }

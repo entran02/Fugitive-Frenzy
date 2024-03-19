@@ -80,7 +80,8 @@ public class LevelManager : MonoBehaviour
         gameText.text = "YOU WIN!";
         gameText.gameObject.SetActive(true);
 
-        Camera.main.GetComponent<AudioSource>().pitch = 2;
+        // Camera.main.GetComponent<AudioSource>().pitch = 2;
+        Camera.main.GetComponent<AudioSource>().volume = 0;
         AudioSource.PlayClipAtPoint(gameWonSFX, Camera.main.transform.position);
 
         if (!string.IsNullOrEmpty(nextLevel))

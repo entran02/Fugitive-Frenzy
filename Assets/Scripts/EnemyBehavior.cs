@@ -37,11 +37,11 @@ public class EnemyBehavior : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.CompareTag("Player"))
+        if(collision.gameObject.CompareTag("Player"))
         {
-            var healthManager = other.GetComponent<HealthManager>();
+            var healthManager = collision.gameObject.GetComponent<HealthManager>();
             healthManager.takeDamage(damageAmount);
             AudioSource.PlayClipAtPoint(hitSFX, Camera.main.transform.position);
         }

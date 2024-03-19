@@ -7064,6 +7064,8 @@ GameObject:
   - component: {fileID: 57258638847325220}
   - component: {fileID: 6173984217983750360}
   - component: {fileID: 4231607425469039599}
+  - component: {fileID: 8299934605079515810}
+  - component: {fileID: 9023414123619564410}
   m_Layer: 0
   m_Name: BridgeSection
   m_TagString: section
@@ -7205,7 +7207,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   width: 400
-  maxSections: 3
+  obstaclePrefab: {fileID: 2844058901226863196, guid: 64275ede6aef0a64b95af20a0555e602, type: 3}
+  nitroPrefab: {fileID: 7517985043363342541, guid: bfed1dc95c379434cb0ff38e2210dc82, type: 3}
 --- !u!65 &4231607425469039599
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7227,6 +7230,48 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 200, y: 100, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &8299934605079515810
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6617573468054050621}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5, y: 100, z: 400}
+  m_Center: {x: -75, y: 50, z: 200}
+--- !u!65 &9023414123619564410
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6617573468054050621}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5, y: 100, z: 400}
+  m_Center: {x: 75, y: 50, z: 200}
 --- !u!1 &6751480968326047787
 GameObject:
   m_ObjectHideFlags: 0
