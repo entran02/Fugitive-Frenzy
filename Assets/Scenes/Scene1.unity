@@ -934,6 +934,7 @@ MonoBehaviour:
   resetText: {fileID: 1298148074}
   gameWonSFX: {fileID: 0}
   nextLevel: 
+  winDistance: 10000
 --- !u!4 &888197322
 Transform:
   m_ObjectHideFlags: 0
@@ -2078,7 +2079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 5392360681464028989, guid: e16e0917e411f4f4c8dcabf57e6c3f9b, type: 3}
-  spawnDistanceBehindPlayer: 150
+  spawnDistanceBehindPlayer: 100
   spawnInterval: 15
   maxDistanceFromPlayer: 600
 --- !u!4 &1541061357
