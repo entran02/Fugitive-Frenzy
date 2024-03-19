@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  moveSpeed: 70
+  moveSpeed: 80
   acceleration: 2
   maxSpeed: 200
   minDistance: 2

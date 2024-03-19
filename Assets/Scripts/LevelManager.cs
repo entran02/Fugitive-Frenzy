@@ -71,6 +71,7 @@ public class LevelManager : MonoBehaviour
         gameText.gameObject.SetActive(true);
 
         Camera.main.GetComponent<AudioSource>().pitch = .5f;
+        Camera.main.GetComponent<AudioSource>().volume = 0;
         Invoke("LoadCurrentLevel", 2);
     }
 

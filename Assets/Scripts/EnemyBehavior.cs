@@ -35,6 +35,10 @@ public class EnemyBehavior : MonoBehaviour
             transform.LookAt(player);
             transform.position = Vector3.MoveTowards(transform.position, player.position, step);
         }
+
+        if (LevelManager.isGameOver) {
+            gameObject.GetComponent<AudioSource>().volume = 0;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
