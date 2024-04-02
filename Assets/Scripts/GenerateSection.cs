@@ -6,36 +6,20 @@ using UnityEngine;
 
 public class GenerateSection : MonoBehaviour
 {
-    public int width;
+    public int length;
+    public int spawnWidth;
     static int maxSections = 10;
-    GameObject[] sections;
+    public GameObject[] sections;
     static List<GameObject> orderedSections;
 
     public GameObject obstaclePrefab;
     public GameObject nitroPrefab;
     public float obstacleSpawnChance = 0.4f;
     public float nitroSpawnChance = 0.3f;
-
-    void SpawnObstacles() {
-        float randomX = Random.Range(-100f, 0f);
-        float randomZ = Random.Range(width / 2, width);
-        if (Random.value < obstacleSpawnChance) {
-            Instantiate(obstaclePrefab, new Vector3(randomX, 0, gameObject.transform.position.z + randomZ), obstaclePrefab.gameObject.transform.rotation);
-        }
-    }
-
-    void SpawnNitro() {
-        float randomX = Random.Range(-100f, 0f);
-        float randomZ = Random.Range(width / 2, width);
-        if (Random.value < nitroSpawnChance) {
-            Instantiate(nitroPrefab, new Vector3(randomX, 0, gameObject.transform.position.z + randomZ), nitroPrefab.gameObject.transform.rotation);
-        }
-    }
     
     // Start is called before the first frame update
     void Start()
     {
-        sections = Resources.LoadAll<GameObject>("Prefabs"); // need this in case one of the sections isn't active
         orderedSections = GameObject.FindGameObjectsWithTag("section").ToList();
         orderedSections.Sort((a, b) => a.transform.position.z.CompareTo(b.transform.position.z));
 
@@ -64,13 +48,13 @@ public class GenerateSection : MonoBehaviour
     }
 
     void addSection(GameObject section) {
-        Vector3 position = gameObject.transform.position + new Vector3(0, 0, width);
+        Vector3 position = gameObject.transform.position + new Vector3(0, 0, length);
 
         bool startAdd = false;
 
         foreach(GameObject element in orderedSections) {
             if (startAdd) {
-                position += new Vector3(0, 0, element.GetComponent<GenerateSection>().width);
+                position += new Vector3(0, 0, element.GetComponent<GenerateSection>().length);
             }
             else if (element == gameObject) {
                 startAdd = true;
@@ -79,6 +63,24 @@ public class GenerateSection : MonoBehaviour
         
         orderedSections.Add(section);
 
-        Instantiate(section, position, gameObject.transform.rotation);
+        Instantiate(section, position, section.transform.rotation);
+    }
+
+    void SpawnObstacles() {
+        float randomX = Random.Range(-spawnWidth, spawnWidth);
+        float randomZ = Random.Range(length / 2, length);
+        if (Random.value < obstacleSpawnChance) {
+            GameObject obj = Instantiate(obstaclePrefab, new Vector3(gameObject.transform.position.x + randomX, gameObject.transform.position.y, gameObject.transform.position.z + randomZ), obstaclePrefab.gameObject.transform.rotation);
+            obj.transform.parent = GameObject.FindGameObjectWithTag("PropParent").transform;
+        }
+    }
+
+    void SpawnNitro() {
+        float randomX = Random.Range(-spawnWidth, spawnWidth);
+        float randomZ = Random.Range(length / 2, length);
+        if (Random.value < nitroSpawnChance) {
+            GameObject obj = Instantiate(nitroPrefab, new Vector3(gameObject.transform.position.x + randomX, gameObject.transform.position.y + 20, gameObject.transform.position.z + randomZ), nitroPrefab.gameObject.transform.rotation);
+            obj.transform.parent = GameObject.FindGameObjectWithTag("PropParent").transform;
+        }
     }
 }

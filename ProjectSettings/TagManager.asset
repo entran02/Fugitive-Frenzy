@@ -9,6 +9,7 @@ TagManager:
   - car_rr_wheel_mesh
   - car_rl_wheel_mesh
   - section
+  - PropParent
   layers:
   - Default
   - TransparentFX
