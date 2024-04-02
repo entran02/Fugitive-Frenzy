@@ -9,7 +9,6 @@ public class LevelManager : MonoBehaviour
     public Text gameText;
     public Text scoreText;
     public Text resetText;
-    public AudioClip gameWonSFX;
     private float startingZPosition;
     private GameObject player;
     public static bool isGameOver = false;
@@ -80,10 +79,10 @@ public class LevelManager : MonoBehaviour
         isGameOver = true;
         gameText.text = "YOU WIN!";
         gameText.gameObject.SetActive(true);
+        scoreText.text = "Score: " + winDistance.ToString("F2");
 
         // Camera.main.GetComponent<AudioSource>().pitch = 2;
         Camera.main.GetComponent<AudioSource>().volume = 0;
-        AudioSource.PlayClipAtPoint(gameWonSFX, Camera.main.transform.position);
 
         if (!string.IsNullOrEmpty(nextLevel))
         {
