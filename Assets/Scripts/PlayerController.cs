@@ -34,13 +34,18 @@ public class CarController : MonoBehaviour
     private bool hasStarted = false;
     public AudioClip engineRunningSFX;
     public AudioClip brakeSFX;
+    public AudioClip nitroSFX;
+    public AudioClip gameWonSFX;
 
     public AudioSource carAudioSource;
+    public AudioSource levelAudioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         carAudioSource.transform.position = Camera.main.transform.position;
+        levelAudioSource.transform.position = Camera.main.transform.position;
+
         PlayEngineStartSFX();
 
         rb = GetComponent<Rigidbody>();
@@ -85,8 +90,9 @@ public class CarController : MonoBehaviour
         HandleSteering();
         UpdateWheels();
 
-        if (LevelManager.isGameOver) {
+        if (LevelManager.isGameOver && levelAudioSource.clip != gameWonSFX) {
             carAudioSource.volume = 0;
+            PlayGameWonSFX();
         }
     }
 
@@ -140,6 +146,7 @@ public class CarController : MonoBehaviour
         isNitrous = true;
         nitrousEndTime = Time.time + duration;
         toggleNitrousEffect(true);
+        PlayNitrousSFX();
     }
 
     private void toggleNitrousEffect(bool isOn) {
@@ -147,6 +154,20 @@ public class CarController : MonoBehaviour
         foreach(TrailRenderer trail in trails) {
             trail.emitting = isOn;
         }
+    }
+    
+    private void PlayNitrousSFX() {
+        levelAudioSource.clip = nitroSFX;
+        levelAudioSource.loop = false;
+        levelAudioSource.volume = 0.5f;
+        levelAudioSource.Play();
+    }
+
+    private void PlayGameWonSFX() {
+        levelAudioSource.clip = gameWonSFX;
+        levelAudioSource.loop = false;
+        levelAudioSource.volume = 0.5f;
+        levelAudioSource.Play();
     }
 
     private void PlayEngineStartSFX() {
