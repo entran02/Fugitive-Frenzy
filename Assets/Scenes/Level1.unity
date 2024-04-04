@@ -1222,6 +1222,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3374474453900846415, guid: e9be6b9d71ce20345b55b654f6eca5d9, type: 3}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374474453900846415, guid: e9be6b9d71ce20345b55b654f6eca5d9, type: 3}
       propertyPath: m_Mass
       value: 1000
       objectReference: {fileID: 0}
@@ -1312,6 +1316,10 @@ PrefabInstance:
     - target: {fileID: 6948587442945639655, guid: e9be6b9d71ce20345b55b654f6eca5d9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7161689254267407433, guid: e9be6b9d71ce20345b55b654f6eca5d9, type: 3}
+      propertyPath: m_SuspensionSpring.spring
+      value: 35000
       objectReference: {fileID: 0}
     - target: {fileID: 7161689254267407433, guid: e9be6b9d71ce20345b55b654f6eca5d9, type: 3}
       propertyPath: m_ForwardFriction.m_Stiffness
@@ -1412,7 +1420,8 @@ MonoBehaviour:
   motorForce: 50000
   breakForce: 300000
   maxSteerAngle: 30
-  jumpAmount: 15000
+  jumpAmount: 3000
+  airControlForce: 100000
   frontLeftWheelCollider: {fileID: 1027197266}
   frontRightWheelCollider: {fileID: 2022997211}
   rearLeftWheelCollider: {fileID: 1027197264}
@@ -2480,7 +2489,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Controls:
 
@@ -2491,7 +2500,9 @@ MonoBehaviour:
     F to toggle look
     direction
 
-    R to reset level'
+    R to reset level
+
+    Space to jump'
 --- !u!222 &1585417356
 CanvasRenderer:
   m_ObjectHideFlags: 0
