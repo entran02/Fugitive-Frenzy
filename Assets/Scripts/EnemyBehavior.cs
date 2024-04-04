@@ -5,49 +5,70 @@ using UnityEngine;
 public class EnemyBehavior : MonoBehaviour
 {
     public Transform player;
-    public float moveSpeed = 90;
-     public float acceleration = 2;
-     public float maxSpeed = 130;
+    public float initialMoveSpeed = 35;
+    public float acceleration = 4;
+    public float maxSpeed = 300;
+    public float rubberBandMaxSpeed = 400;
     public float minDistance = 2;
+    public float maxDistance = 600;
     public int damageAmount = 34;
     public AudioClip hitSFX;
-    float currentSpeed;
+
+    private float currentSpeed;
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
-        if(player == null)
+        if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
         }
-        currentSpeed = moveSpeed;
+        currentSpeed = initialMoveSpeed;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentSpeed = Mathf.Min(currentSpeed + (acceleration * Time.deltaTime), maxSpeed);
-        float step = currentSpeed * Time.deltaTime;
-        
-        float distance = Vector3.Distance(transform.position, player.position);
+        if (LevelManager.isGameOver)
+        {
+            audioSource.volume = 0;
+            return;
+        }
 
-        if(distance > minDistance)
+        float distance = Vector3.Distance(transform.position, player.position);
+        AdjustSpeedBasedOnDistance(distance);
+
+        float step = currentSpeed * Time.deltaTime;
+
+        if (distance > minDistance)
         {
             transform.LookAt(player);
             transform.position = Vector3.MoveTowards(transform.position, player.position, step);
-        }
-
-        if (LevelManager.isGameOver) {
-            gameObject.GetComponent<AudioSource>().volume = 0;
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             var healthManager = collision.gameObject.GetComponent<HealthManager>();
             healthManager.takeDamage(damageAmount);
             AudioSource.PlayClipAtPoint(hitSFX, Camera.main.transform.position);
+        }
+    }
+
+    void AdjustSpeedBasedOnDistance(float distance)
+    {
+        if (distance > maxDistance)
+        {
+            currentSpeed = rubberBandMaxSpeed;
+        }
+        else
+        {
+            currentSpeed += acceleration * Time.deltaTime;
+            currentSpeed = Mathf.Min(currentSpeed, maxSpeed + ((maxDistance - distance) / maxDistance) * (rubberBandMaxSpeed - maxSpeed));
         }
     }
 }
