@@ -6954,7 +6954,8 @@ MonoBehaviour:
   motorForce: 50000
   breakForce: 300000
   maxSteerAngle: 30
-  jumpAmount: 15000
+  jumpAmount: 4000
+  airControlForce: 100000
   frontLeftWheelCollider: {fileID: 1027197266}
   frontRightWheelCollider: {fileID: 2022997211}
   rearLeftWheelCollider: {fileID: 1027197264}
@@ -10905,7 +10906,7 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 'Controls:
 
@@ -10916,7 +10917,9 @@ MonoBehaviour:
     F to toggle look
     direction
 
-    R to reset level'
+    R to reset level
+
+    Space to jump'
 --- !u!222 &1585417356
 CanvasRenderer:
   m_ObjectHideFlags: 0

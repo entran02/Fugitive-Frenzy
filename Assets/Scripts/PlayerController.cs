@@ -7,7 +7,9 @@ public class CarController : MonoBehaviour
     public float motorForce;
     public float breakForce;
     public float maxSteerAngle = 30;
-    public float jumpAmount = 15000;
+    public float jumpAmount = 3000;
+
+    public float airControlForce = 100000;
 
     public WheelCollider frontLeftWheelCollider;
     public WheelCollider frontRightWheelCollider;
@@ -50,21 +52,42 @@ public class CarController : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
 
-        frontLeftWheelCollider.mass = 100;
-        frontRightWheelCollider.mass = 100;
-        rearLeftWheelCollider.mass = 50;
-        rearRightWheelCollider.mass = 50;
+        // frontLeftWheelCollider.mass = 100;
+        // frontRightWheelCollider.mass = 100;
+        // rearLeftWheelCollider.mass = 50;
+        // rearRightWheelCollider.mass = 50;
+        SetUpWheelCollider(frontLeftWheelCollider);
+        SetUpWheelCollider(frontRightWheelCollider);
+        SetUpWheelCollider(rearLeftWheelCollider);
+        SetUpWheelCollider(rearRightWheelCollider);
+    }
+
+    private void SetUpWheelCollider(WheelCollider wheelCollider) {
+        wheelCollider.mass = 100;
+        wheelCollider.suspensionDistance = 0.2f;
+        wheelCollider.forceAppPointDistance = 0.1f;
+        wheelCollider.suspensionSpring = new JointSpring {
+            spring = 35000,
+            damper = 4500,
+            targetPosition = 0
+        };
+        wheelCollider.forwardFriction = new WheelFrictionCurve {
+            asymptoteSlip = 2,
+            asymptoteValue = 15,
+            extremumSlip = 1,
+            extremumValue = 20,
+            stiffness = 1
+        };
     }
 
     // Update is called once per frame
     void Update()
     {
-        // **fix jumping
-        if(Input.GetKeyDown(KeyCode.Space)) {
-            if(transform.position.y < 1){
-                rb.AddForce(0, jumpAmount, 0, ForceMode.Impulse);
-            }
+        if (Input.GetKeyDown(KeyCode.Space) && !IsAirborne()) {
+            Debug.Log("Jumping");
+            rb.AddForce(Vector3.up * jumpAmount * 1000);
         }
+
     }
     private void FixedUpdate()
     {
@@ -86,6 +109,14 @@ public class CarController : MonoBehaviour
         } else if (!carAudioSource.isPlaying && carAudioSource.clip != engineRunningSFX) {
             PlayEngineRunningSFX();
         }
+
+        if (IsAirborne()) {
+            Debug.Log("Airborne");
+            rb.AddForce(transform.up * Physics.gravity.y * 5, ForceMode.Acceleration);
+            rb.AddTorque(transform.right * airControlForce * verticalInput);
+            rb.AddTorque(-1 * transform.forward * airControlForce * horizontalInput);
+        }
+
         HandleMotor();
         HandleSteering();
         UpdateWheels();
@@ -96,11 +127,15 @@ public class CarController : MonoBehaviour
         }
     }
 
+    private bool IsAirborne() {
+        return !Physics.Raycast(transform.position, Vector3.down, 1.0f);
+    }
+
     private void HandleMotor()
     {
         float effectiveMotorForce = motorForce;
         if(isNitrous) {
-            effectiveMotorForce *= 5;
+            effectiveMotorForce *= 4;
         }
         frontLeftWheelCollider.motorTorque = verticalInput * effectiveMotorForce;
         frontRightWheelCollider.motorTorque = verticalInput * effectiveMotorForce;
