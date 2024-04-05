@@ -37,6 +37,7 @@ public class CarController : MonoBehaviour
     public AudioClip engineRunningSFX;
     public AudioClip brakeSFX;
     public AudioClip nitroSFX;
+    public AudioClip jumpSFX;
     public AudioClip gameWonSFX;
 
     public AudioSource carAudioSource;
@@ -86,6 +87,7 @@ public class CarController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && !IsAirborne()) {
             Debug.Log("Jumping");
             rb.AddForce(Vector3.up * jumpAmount * 1000);
+            PlayJumpSFX();
         }
 
     }
@@ -220,5 +222,12 @@ public class CarController : MonoBehaviour
             carAudioSource.volume = 0.05f;
             carAudioSource.Play();
         }
+    }
+
+    private void PlayJumpSFX() {
+        carAudioSource.clip = jumpSFX;
+        carAudioSource.loop = false;
+        carAudioSource.volume = 1f;
+        carAudioSource.Play();
     }
 }
