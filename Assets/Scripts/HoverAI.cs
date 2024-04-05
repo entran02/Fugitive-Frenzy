@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class HoverAI : MonoBehaviour
@@ -26,6 +28,7 @@ public class HoverAI : MonoBehaviour
     private float stateChangeTime = 0f;
     private float stunTimeEnd = 0f;
     private float nextAttackTime = 0f;
+    public UIManager uiManager;
 
     void Start()
     {
@@ -93,14 +96,22 @@ public class HoverAI : MonoBehaviour
     {
         if (Time.time >= nextAttackTime)
         {
-            // spawn the explosion and update nextAttackTime
-            Vector3 spawnPosition = player.position + player.forward * explosionSpawnDistance;
-            Instantiate(explosionPrefab, spawnPosition, Quaternion.identity);
-            AudioSource.PlayClipAtPoint(rocketSFX, Camera.main.transform.position);
-            nextAttackTime = Time.time + attackInterval; // set timer for next attack
-
-            ChangeState(EnemyState.Chase); // go back to Chase after attacking
+            nextAttackTime = Time.time + attackInterval;
+            StartCoroutine(AttackSequence());
         }
+    }
+
+    IEnumerator AttackSequence()
+    {
+        uiManager.ShowWarning();
+
+        yield return new WaitForSeconds(1f);
+
+        Vector3 spawnPosition = player.position + player.forward * explosionSpawnDistance;
+        Instantiate(explosionPrefab, spawnPosition, Quaternion.identity);
+        AudioSource.PlayClipAtPoint(rocketSFX, Camera.main.transform.position);
+
+        ChangeState(EnemyState.Chase);
     }
 
     void Stunned()
