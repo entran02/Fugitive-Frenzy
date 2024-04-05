@@ -15,11 +15,10 @@ public class GenerateSection : MonoBehaviour
     public GameObject obstaclePrefab;
     public GameObject nitroPrefab;
 
-    public GameObject spikeStripPowerupPrefab;
+    public GameObject oilSlickPowerupPrefab;
     public float obstacleSpawnChance = 0.4f;
     public float nitroSpawnChance = 0.3f;
-
-    public float spikeStripPowerupSpawnChance = 0.2f;
+    public float oilSlickPowerupSpawnChance = 0.3f;
     
     // Start is called before the first frame update
     void Start()
@@ -81,7 +80,7 @@ public class GenerateSection : MonoBehaviour
 
     void SpawnPowerups() {
         SpawnNitro();
-        SpawnSpikeStrip();
+        SpawnOilSlickPowerup();
     }
 
     void SpawnNitro() {
@@ -93,7 +92,11 @@ public class GenerateSection : MonoBehaviour
         }
     }
 
-    void SpawnSpikeStrip() {
-
+    void SpawnOilSlickPowerup() {
+        float randomZ = Random.Range(length / 2, length);
+        if (Random.value < oilSlickPowerupSpawnChance) {
+            GameObject obj = Instantiate(oilSlickPowerupPrefab, new Vector3(gameObject.transform.position.x + 0, gameObject.transform.position.y + 20, gameObject.transform.position.z + randomZ), oilSlickPowerupPrefab.gameObject.transform.rotation);
+            obj.transform.parent = GameObject.FindGameObjectWithTag("PropParent").transform;
+        }
     }
 }

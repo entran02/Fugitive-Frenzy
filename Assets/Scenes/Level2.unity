@@ -10642,10 +10642,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729d638b1b138864680b9aafc29beb45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 5392360681464028989, guid: e16e0917e411f4f4c8dcabf57e6c3f9b, type: 3}
-  spawnDistanceBehindPlayer: 200
-  spawnInterval: 15
-  maxDistanceFromPlayer: 600
 --- !u!4 &1541061357
 Transform:
   m_ObjectHideFlags: 0
@@ -18792,6 +18788,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3999645652474220799, guid: 35e6894cdf360104b8f9bb4cf841a31a, type: 3}
+      propertyPath: oilSlickPowerupPrefab
+      value: 
+      objectReference: {fileID: 6737840445593820475, guid: 94338c4d006fb2343a40c18034c3851e, type: 3}
     - target: {fileID: 3999645652474220799, guid: 35e6894cdf360104b8f9bb4cf841a31a, type: 3}
       propertyPath: sections.Array.data[0]
       value: 
