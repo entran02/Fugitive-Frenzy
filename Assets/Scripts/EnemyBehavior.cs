@@ -19,6 +19,8 @@ public class EnemyBehavior : MonoBehaviour
 
     private float hitCountdown = 0;
 
+    private bool isFrozen = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,11 @@ public class EnemyBehavior : MonoBehaviour
         if (LevelManager.isGameOver)
         {
             audioSource.volume = 0;
+            return;
+        }
+
+        if (isFrozen)
+        {
             return;
         }
 
@@ -63,6 +70,8 @@ public class EnemyBehavior : MonoBehaviour
             var healthManager = collision.gameObject.GetComponent<HealthManager>();
             healthManager.takeDamage(damageAmount);
             AudioSource.PlayClipAtPoint(hitSFX, Camera.main.transform.position);
+            isFrozen = true;
+            Invoke("unFreeze", 2);
         }
     }
 
@@ -82,5 +91,10 @@ public class EnemyBehavior : MonoBehaviour
     public void Hit(int duration)
     {
         hitCountdown = duration;
+    }
+
+    public void unFreeze()
+    {
+        isFrozen = false;
     }
 }
