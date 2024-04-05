@@ -19184,6 +19184,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3999645652474220799, guid: 35e6894cdf360104b8f9bb4cf841a31a, type: 3}
+      propertyPath: oilSlickPowerupPrefab
+      value: 
+      objectReference: {fileID: 6737840445593820475, guid: 94338c4d006fb2343a40c18034c3851e, type: 3}
+    - target: {fileID: 3999645652474220799, guid: 35e6894cdf360104b8f9bb4cf841a31a, type: 3}
       propertyPath: sections.Array.data[0]
       value: 
       objectReference: {fileID: 337637558}

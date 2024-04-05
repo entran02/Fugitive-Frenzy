@@ -26,11 +26,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2b5e4dcfbc9c54f019932d7dc34a1d4e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 275.49374
+      value: -17.5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2b5e4dcfbc9c54f019932d7dc34a1d4e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 225
+      value: 33.6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2b5e4dcfbc9c54f019932d7dc34a1d4e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -74,6 +74,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 2b5e4dcfbc9c54f019932d7dc34a1d4e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3480048575414165021}
+    - targetCorrespondingSourceObject: {fileID: 100000, guid: 2b5e4dcfbc9c54f019932d7dc34a1d4e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4244343115954658311}
   m_SourcePrefab: {fileID: 100100000, guid: 2b5e4dcfbc9c54f019932d7dc34a1d4e, type: 3}
 --- !u!1 &7517985043363342541 stripped
 GameObject:
@@ -116,4 +119,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nitrousDuration: 5
-  nitroSFX: {fileID: 8300000, guid: c2397a44d894c9c4f8bef9626fc5fe39, type: 3}
+--- !u!114 &4244343115954658311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7517985043363342541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73adc162c2a86d7468dd663950acbb47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bobSpeed: 5
+  bobHeight: 2

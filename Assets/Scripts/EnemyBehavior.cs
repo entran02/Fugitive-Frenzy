@@ -17,6 +17,8 @@ public class EnemyBehavior : MonoBehaviour
     private float currentSpeed;
     private AudioSource audioSource;
 
+    private float hitCountdown = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +43,11 @@ public class EnemyBehavior : MonoBehaviour
         AdjustSpeedBasedOnDistance(distance);
 
         float step = currentSpeed * Time.deltaTime;
+        if (hitCountdown > 0)
+        {
+            hitCountdown -= Time.deltaTime;
+            step /= 2;
+        }
 
         if (distance > minDistance)
         {
@@ -70,5 +77,10 @@ public class EnemyBehavior : MonoBehaviour
             currentSpeed += acceleration * Time.deltaTime;
             currentSpeed = Mathf.Min(currentSpeed, maxSpeed + ((maxDistance - distance) / maxDistance) * (rubberBandMaxSpeed - maxSpeed));
         }
+    }
+
+    public void Hit(int duration)
+    {
+        hitCountdown = duration;
     }
 }

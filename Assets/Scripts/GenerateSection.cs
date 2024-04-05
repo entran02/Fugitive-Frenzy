@@ -14,8 +14,11 @@ public class GenerateSection : MonoBehaviour
 
     public GameObject obstaclePrefab;
     public GameObject nitroPrefab;
+
+    public GameObject oilSlickPowerupPrefab;
     public float obstacleSpawnChance = 0.4f;
     public float nitroSpawnChance = 0.3f;
+    public float oilSlickPowerupSpawnChance = 0.3f;
     
     // Start is called before the first frame update
     void Start()
@@ -30,7 +33,7 @@ public class GenerateSection : MonoBehaviour
         }
 
         SpawnObstacles();
-        SpawnNitro();
+        SpawnPowerups();
     }
 
     // Update is called once per frame
@@ -75,11 +78,24 @@ public class GenerateSection : MonoBehaviour
         }
     }
 
+    void SpawnPowerups() {
+        SpawnNitro();
+        SpawnOilSlickPowerup();
+    }
+
     void SpawnNitro() {
         float randomX = Random.Range(-spawnWidth, spawnWidth);
         float randomZ = Random.Range(length / 2, length);
         if (Random.value < nitroSpawnChance) {
             GameObject obj = Instantiate(nitroPrefab, new Vector3(gameObject.transform.position.x + randomX, gameObject.transform.position.y + 20, gameObject.transform.position.z + randomZ), nitroPrefab.gameObject.transform.rotation);
+            obj.transform.parent = GameObject.FindGameObjectWithTag("PropParent").transform;
+        }
+    }
+
+    void SpawnOilSlickPowerup() {
+        float randomZ = Random.Range(length / 2, length);
+        if (Random.value < oilSlickPowerupSpawnChance) {
+            GameObject obj = Instantiate(oilSlickPowerupPrefab, new Vector3(gameObject.transform.position.x + 0, gameObject.transform.position.y + 20, gameObject.transform.position.z + randomZ), oilSlickPowerupPrefab.gameObject.transform.rotation);
             obj.transform.parent = GameObject.FindGameObjectWithTag("PropParent").transform;
         }
     }

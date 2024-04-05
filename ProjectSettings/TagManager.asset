@@ -10,6 +10,7 @@ TagManager:
   - car_rl_wheel_mesh
   - section
   - PropParent
+  - Enemy
   - Lead
   - Explosion
   layers:
