@@ -83,12 +83,4 @@ public class HealthManager : MonoBehaviour
     {
         healthSlider.value = health;
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.CompareTag("Explosion"))
-        {
-            takeDamage(34);
-        }
-    }
 }
