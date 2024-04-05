@@ -27,6 +27,7 @@ public class LevelManager : MonoBehaviour
             startingZPosition = player.transform.position.z;
         }
         isGameOver = false;
+        isGameWon = false;
         resetText.gameObject.SetActive(false);
         gameText.gameObject.SetActive(false);
     }

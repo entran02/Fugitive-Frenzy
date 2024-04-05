@@ -136,22 +136,11 @@ public class CarController : MonoBehaviour
 
             if (LevelManager.isGameWon) {
                 PlayGameWonSFX();
-                print("GAMEWON?");
             }
             else {
                 PlayGameLostSFX();
             }
         }
-
-        // if (LevelManager.isGameOver && levelAudioSource.clip && gameWonSFX || levelAudioSource.clip != gameLostSFX) {
-        //     carAudioSource.volume = 0;
-        //     if (LevelManager.isGameWon) {
-        //         PlayGameWonSFX();
-        //     }
-        //     else {
-        //         PlayGameLostSFX();
-        //     }
-        // }
     }
 
     private bool IsAirborne() {
