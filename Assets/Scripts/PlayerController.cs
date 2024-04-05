@@ -43,6 +43,8 @@ public class CarController : MonoBehaviour
     public AudioClip jumpSFX;
     public AudioClip gameWonSFX;
 
+    public AudioClip gameLostSFX;
+
     public AudioSource carAudioSource;
     public AudioSource levelAudioSource;
 
@@ -95,7 +97,7 @@ public class CarController : MonoBehaviour
             PlayJumpSFX();
         }
 
-        speedText.text = rb.velocity.magnitude.ToString("0") + " km/h";
+        speedText.text = (rb.velocity.magnitude / 5).ToString("0") + " km/h";
     }
     private void FixedUpdate()
     {
@@ -129,10 +131,27 @@ public class CarController : MonoBehaviour
         HandleSteering();
         UpdateWheels();
 
-        if (LevelManager.isGameOver && levelAudioSource.clip != gameWonSFX) {
+        if (LevelManager.isGameOver && levelAudioSource.clip != gameWonSFX && levelAudioSource.clip != gameLostSFX) {
             carAudioSource.volume = 0;
-            PlayGameWonSFX();
+
+            if (LevelManager.isGameWon) {
+                PlayGameWonSFX();
+                print("GAMEWON?");
+            }
+            else {
+                PlayGameLostSFX();
+            }
         }
+
+        // if (LevelManager.isGameOver && levelAudioSource.clip && gameWonSFX || levelAudioSource.clip != gameLostSFX) {
+        //     carAudioSource.volume = 0;
+        //     if (LevelManager.isGameWon) {
+        //         PlayGameWonSFX();
+        //     }
+        //     else {
+        //         PlayGameLostSFX();
+        //     }
+        // }
     }
 
     private bool IsAirborne() {
@@ -208,6 +227,13 @@ public class CarController : MonoBehaviour
 
     private void PlayGameWonSFX() {
         levelAudioSource.clip = gameWonSFX;
+        levelAudioSource.loop = false;
+        levelAudioSource.volume = 0.5f;
+        levelAudioSource.Play();
+    }
+
+    private void PlayGameLostSFX() {
+        levelAudioSource.clip = gameLostSFX;
         levelAudioSource.loop = false;
         levelAudioSource.volume = 0.5f;
         levelAudioSource.Play();

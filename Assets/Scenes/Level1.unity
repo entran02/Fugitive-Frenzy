@@ -224,7 +224,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 10.4}
+  m_AnchoredPosition: {x: 4, y: 10}
   m_SizeDelta: {x: 160, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &67919480
@@ -249,7 +249,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: d7cffddcbc0cc8f4ebe6e28eb9804082, type: 3}
-    m_FontSize: 10
+    m_FontSize: 9
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -260,7 +260,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 100
+  m_Text: 100 km/h
 --- !u!222 &67919481
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1698,6 +1698,7 @@ MonoBehaviour:
   brakeSFX: {fileID: 8300000, guid: 030c97db4c686a4419f83ab6ea606b07, type: 3}
   nitroSFX: {fileID: 8300000, guid: c2397a44d894c9c4f8bef9626fc5fe39, type: 3}
   gameWonSFX: {fileID: 8300000, guid: aaa01e1ec54b5954bb5c0f8bd9398ded, type: 3}
+  gameLostSFX: {fileID: 8300000, guid: d3d7da68fb8c82a4189a724804ed9fa7, type: 3}
   carAudioSource: {fileID: 821301601}
   levelAudioSource: {fileID: 296994158}
   speedText: {fileID: 67919480}

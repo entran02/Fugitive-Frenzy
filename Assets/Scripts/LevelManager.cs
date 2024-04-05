@@ -14,6 +14,8 @@ public class LevelManager : MonoBehaviour
     public static bool isGameOver = false;
     public string nextLevel;
     public int winDistance = 10000;
+    
+    public static bool isGameWon = false;
 
     // Start is called before the first frame update
     void Start()
@@ -66,6 +68,7 @@ public class LevelManager : MonoBehaviour
     public void LevelLost()
     {
         isGameOver = true;
+        gameText.color = Color.red;
         gameText.text = "GAME OVER!";
         gameText.gameObject.SetActive(true);
 
@@ -77,6 +80,8 @@ public class LevelManager : MonoBehaviour
     public void LevelBeat()
     {
         isGameOver = true;
+        isGameWon = true;
+        gameText.color = Color.green;
         gameText.text = "YOU WIN!";
         gameText.gameObject.SetActive(true);
         scoreText.text = "Score: " + winDistance.ToString("F2");
