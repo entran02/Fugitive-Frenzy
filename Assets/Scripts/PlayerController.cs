@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection.Emit;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CarController : MonoBehaviour
 {
@@ -42,6 +45,8 @@ public class CarController : MonoBehaviour
 
     public AudioSource carAudioSource;
     public AudioSource levelAudioSource;
+
+    public Text speedText;
 
     // Start is called before the first frame update
     void Start()
@@ -90,6 +95,7 @@ public class CarController : MonoBehaviour
             PlayJumpSFX();
         }
 
+        speedText.text = rb.velocity.magnitude.ToString("0") + " km/h";
     }
     private void FixedUpdate()
     {
