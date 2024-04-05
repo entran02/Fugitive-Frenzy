@@ -7339,6 +7339,7 @@ MonoBehaviour:
   engineRunningSFX: {fileID: 8300000, guid: 30ab19edabbfdea499f3db426001e120, type: 3}
   brakeSFX: {fileID: 8300000, guid: 030c97db4c686a4419f83ab6ea606b07, type: 3}
   nitroSFX: {fileID: 8300000, guid: c2397a44d894c9c4f8bef9626fc5fe39, type: 3}
+  jumpSFX: {fileID: 8300000, guid: f5f169cdfc258f745a0e21bfe8aba94f, type: 3}
   gameWonSFX: {fileID: 8300000, guid: aaa01e1ec54b5954bb5c0f8bd9398ded, type: 3}
   gameLostSFX: {fileID: 8300000, guid: d3d7da68fb8c82a4189a724804ed9fa7, type: 3}
   carAudioSource: {fileID: 821301601}
@@ -11139,11 +11140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729d638b1b138864680b9aafc29beb45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 5392360681464028989, guid: e16e0917e411f4f4c8dcabf57e6c3f9b, type: 3}
-  minDistanceFromPlayer: 100
-  maxDistanceFromPlayer: 600
-  baseSpeed: 10
-  maxSpeed: 20
 --- !u!4 &1541061357
 Transform:
   m_ObjectHideFlags: 0
