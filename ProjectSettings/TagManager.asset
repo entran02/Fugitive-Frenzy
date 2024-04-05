@@ -11,6 +11,8 @@ TagManager:
   - section
   - PropParent
   - Enemy
+  - Lead
+  - Explosion
   layers:
   - Default
   - TransparentFX
