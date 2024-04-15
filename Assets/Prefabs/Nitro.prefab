@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b563b1d8f2a75147b5653c0e85b68d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nitrousDuration: 5
+  nitrousDuration: 1
 --- !u!114 &4244343115954658311
 MonoBehaviour:
   m_ObjectHideFlags: 0

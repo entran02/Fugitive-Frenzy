@@ -381,6 +381,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cop_enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5392360681464028989, guid: e16e0917e411f4f4c8dcabf57e6c3f9b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7333621629565781945, guid: e16e0917e411f4f4c8dcabf57e6c3f9b, type: 3}
       propertyPath: maxSpeed
       value: 300
