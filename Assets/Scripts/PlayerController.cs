@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection.Emit;
+using JetBrains.Annotations;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -49,6 +50,8 @@ public class CarController : MonoBehaviour
     public AudioSource levelAudioSource;
 
     public Text speedText;
+
+    public int maxSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -140,6 +143,10 @@ public class CarController : MonoBehaviour
             else {
                 PlayGameLostSFX();
             }
+        }
+
+        if (rb.velocity.magnitude / 5 > maxSpeed) {
+            rb.velocity = rb.velocity.normalized * maxSpeed * 5;
         }
     }
 
