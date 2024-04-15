@@ -656,7 +656,7 @@ MonoBehaviour:
   length: 1500
   spawnWidth: 80
   sections:
-  - {fileID: 0}
+  - {fileID: 8008545674116211936, guid: 7441fb42678c09947acc9bb38197bf6f, type: 3}
   - {fileID: 3244021519969503495, guid: 1adeadc10b88d4840a06fa9b6595b699, type: 3}
   - {fileID: 6325407087622335752}
   obstaclePrefab: {fileID: 6954263632038634872, guid: 43543cfd8a018574b851d95c04979df4, type: 3}
