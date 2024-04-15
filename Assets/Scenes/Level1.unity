@@ -709,14 +709,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6173984217983750360, guid: 471947dfc46ed1c49b4b7cb669f9a044, type: 3}
-      propertyPath: oilSlickPowerupPrefab
-      value: 
-      objectReference: {fileID: 6737840445593820475, guid: 94338c4d006fb2343a40c18034c3851e, type: 3}
-    - target: {fileID: 6173984217983750360, guid: 471947dfc46ed1c49b4b7cb669f9a044, type: 3}
-      propertyPath: oilSlickPowerupSpawnChance
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 6617573468054050621, guid: 471947dfc46ed1c49b4b7cb669f9a044, type: 3}
       propertyPath: m_Name
       value: BridgeSection
@@ -2454,14 +2446,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 25552973}
     m_Modifications:
-    - target: {fileID: 2767741686925018533, guid: 51fb16f7d639b3447ab6317b05dd3679, type: 3}
-      propertyPath: oilSlickPowerupPrefab
-      value: 
-      objectReference: {fileID: 6737840445593820475, guid: 94338c4d006fb2343a40c18034c3851e, type: 3}
-    - target: {fileID: 2767741686925018533, guid: 51fb16f7d639b3447ab6317b05dd3679, type: 3}
-      propertyPath: oilSlickPowerupSpawnChance
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 8247728700796153940, guid: 51fb16f7d639b3447ab6317b05dd3679, type: 3}
       propertyPath: m_Name
       value: HouseSection
@@ -7730,10 +7714,6 @@ PrefabInstance:
     - target: {fileID: 1497552609879540094, guid: 53a4d286e27c3654fbdcb711c89716a8, type: 3}
       propertyPath: m_Name
       value: CitySection
-      objectReference: {fileID: 0}
-    - target: {fileID: 2783106981545709518, guid: 53a4d286e27c3654fbdcb711c89716a8, type: 3}
-      propertyPath: oilSlickPowerupSpawnChance
-      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3946114340940339336, guid: 53a4d286e27c3654fbdcb711c89716a8, type: 3}
       propertyPath: m_LocalPosition.x

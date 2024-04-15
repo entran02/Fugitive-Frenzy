@@ -11111,50 +11111,6 @@ Transform:
   - {fileID: 1986278817}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1541061355
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1541061357}
-  - component: {fileID: 1541061356}
-  m_Layer: 0
-  m_Name: EnemySpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1541061356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541061355}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 729d638b1b138864680b9aafc29beb45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1541061357
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541061355}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.088005, y: 12.3311405, z: -619.0762}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1558371973
 GameObject:
   m_ObjectHideFlags: 0
@@ -19442,10 +19398,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3999645652474220799, guid: 35e6894cdf360104b8f9bb4cf841a31a, type: 3}
-      propertyPath: oilSlickPowerupPrefab
-      value: 
-      objectReference: {fileID: 6737840445593820475, guid: 94338c4d006fb2343a40c18034c3851e, type: 3}
-    - target: {fileID: 3999645652474220799, guid: 35e6894cdf360104b8f9bb4cf841a31a, type: 3}
       propertyPath: sections.Array.data[0]
       value: 
       objectReference: {fileID: 337637558}
@@ -19591,7 +19543,6 @@ SceneRoots:
   - {fileID: 1027197255}
   - {fileID: 166557363}
   - {fileID: 788112772}
-  - {fileID: 1541061357}
   - {fileID: 888197322}
   - {fileID: 1523688885}
   - {fileID: 541212399}

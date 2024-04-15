@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2000555386729551685}
   - component: {fileID: 9120180096747332943}
   - component: {fileID: 4524840610777779744}
+  - component: {fileID: 2975305878009933879}
   m_Layer: 0
   m_Name: RetailSection
   m_TagString: section
@@ -1014,7 +1015,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 200, y: 100, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 50, z: 0}
 --- !u!65 &2000555386729551685
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1081,6 +1082,27 @@ MonoBehaviour:
   obstacleSpawnChance: 0.6
   nitroSpawnChance: 0.3
   oilSlickPowerupSpawnChance: 0.2
+--- !u!65 &2975305878009933879
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8008545674116211936}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 200, y: 5, z: 1600}
+  m_Center: {x: 0, y: 100, z: -800}
 --- !u!1001 &13569633722162999
 PrefabInstance:
   m_ObjectHideFlags: 0
