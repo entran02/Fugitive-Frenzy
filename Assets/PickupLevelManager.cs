@@ -24,8 +24,8 @@ public class PickupLevelManager : MonoBehaviour
             isGameOver = true;
         }
 
-        // if (isGameOver) {
-        //     SceneManager.LoadScene(2);
-        // }
+        if (isGameOver) {
+            SceneManager.LoadScene(2);
+        }
     }
 }
