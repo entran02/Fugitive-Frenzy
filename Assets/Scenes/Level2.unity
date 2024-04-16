@@ -4631,6 +4631,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: cop_enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 5392360681464028989, guid: e16e0917e411f4f4c8dcabf57e6c3f9b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8787723383751618492, guid: e16e0917e411f4f4c8dcabf57e6c3f9b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -681
@@ -8952,7 +8956,7 @@ MonoBehaviour:
   currentState: 0
   target: {fileID: 0}
   player: {fileID: 0}
-  explosionPrefab: {fileID: 4618881914464312142, guid: 183f958f2d5b5cc459823d6d0d403e2c, type: 3}
+  explosionPrefab: {fileID: 8739410245718401280, guid: 93f754887788c044c8d8aa8f9599bb0e, type: 3}
   explosionSpawnDistance: 330
   chaseSpeed: 400
   attackRange: 10
@@ -8973,7 +8977,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: b622096b3de988347a433d58b399280c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.35
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0

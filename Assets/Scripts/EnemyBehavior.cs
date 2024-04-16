@@ -61,6 +61,8 @@ public class EnemyBehavior : MonoBehaviour
             transform.LookAt(player);
             transform.position = Vector3.MoveTowards(transform.position, player.position, step);
         }
+
+        print(GetComponent<Rigidbody>().velocity.magnitude);
     }
 
     private void OnCollisionEnter(Collision collision)
