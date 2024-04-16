@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Unity.VisualScripting;
 
 public class LevelManager : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class LevelManager : MonoBehaviour
     public int winDistance = 10000;
     
     public static bool isGameWon = false;
+
+    float distanceTraveled;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +38,11 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isGameOver) return;
+        distanceTraveled = Mathf.Abs(player.transform.position.z - startingZPosition);
+        
+        if (isGameOver) {
+            return;
+        }
 
         // reset level if R is pressed
         if (Input.GetKeyDown(KeyCode.R))
@@ -45,7 +52,6 @@ public class LevelManager : MonoBehaviour
 
         if (player != null)
         {
-            float distanceTraveled = Mathf.Abs(player.transform.position.z - startingZPosition);
             scoreText.text = "Score: " + distanceTraveled.ToString("F2");
 
             // check if cars local z axis is flipped to tell user to reset
@@ -66,6 +72,10 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    void OnDestroy() {
+        PlayerPrefs.SetFloat("TotalMinutes", PlayerPrefs.GetFloat("TotalMinutes", 0f) + Time.time / 60);
+    }
+
     public void LevelLost()
     {
         isGameOver = true;
@@ -76,6 +86,9 @@ public class LevelManager : MonoBehaviour
         Camera.main.GetComponent<AudioSource>().pitch = .5f;
         Camera.main.GetComponent<AudioSource>().volume = 0;
         Invoke("LoadCurrentLevel", 2);
+        PlayerPrefs.SetFloat("TotalDistance", PlayerPrefs.GetFloat("TotalDistance", 0f) + distanceTraveled);
+
+        PlayerPrefs.SetInt("TotalDeaths", PlayerPrefs.GetInt("TotalDeaths", 0) + 1);
     }
 
     public void LevelBeat()
@@ -89,6 +102,7 @@ public class LevelManager : MonoBehaviour
 
         // Camera.main.GetComponent<AudioSource>().pitch = 2;
         Camera.main.GetComponent<AudioSource>().volume = 0;
+        PlayerPrefs.SetFloat("TotalDistance", PlayerPrefs.GetFloat("TotalDistance", 0f) + distanceTraveled);
 
         if (!string.IsNullOrEmpty(nextLevel))
         {

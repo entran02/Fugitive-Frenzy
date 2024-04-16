@@ -21,6 +21,7 @@ public class OilSlickPowerupScript : MonoBehaviour
         if (other.gameObject.CompareTag("Player")) {
             oilSlick.GetComponent<OilSlickScript>().activate();
             gameObject.GetComponent<MeshRenderer>().enabled = false;
+            PlayerPrefs.SetInt("TotalOil", PlayerPrefs.GetInt("TotalOil", 0) + 1);
         }
     }
 }

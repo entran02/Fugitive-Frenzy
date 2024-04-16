@@ -98,6 +98,8 @@ public class CarController : MonoBehaviour
             Debug.Log("Jumping");
             rb.AddForce(Vector3.up * jumpAmount * 1000);
             PlayJumpSFX();
+            PlayerPrefs.SetInt("TotalJumps", PlayerPrefs.GetInt("TotalJumps", 0) + 1);
+            print("jumps: " + PlayerPrefs.GetInt("TotalJumps"));
         }
 
         speedText.text = (rb.velocity.magnitude / 5).ToString("0") + " km/h";
@@ -124,7 +126,7 @@ public class CarController : MonoBehaviour
         }
 
         if (IsAirborne()) {
-            Debug.Log("Airborne");
+            // Debug.Log("Airborne");
             rb.AddForce(transform.up * Physics.gravity.y * 10, ForceMode.Acceleration);
             rb.AddTorque(transform.right * airControlForce * verticalInput);
             rb.AddTorque(-1 * transform.forward * airControlForce * horizontalInput);
