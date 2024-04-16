@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection.Emit;
+using JetBrains.Annotations;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -50,6 +51,8 @@ public class CarController : MonoBehaviour
 
     public Text speedText;
 
+    public int maxSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,29 +67,29 @@ public class CarController : MonoBehaviour
         // frontRightWheelCollider.mass = 100;
         // rearLeftWheelCollider.mass = 50;
         // rearRightWheelCollider.mass = 50;
-        SetUpWheelCollider(frontLeftWheelCollider);
-        SetUpWheelCollider(frontRightWheelCollider);
-        SetUpWheelCollider(rearLeftWheelCollider);
-        SetUpWheelCollider(rearRightWheelCollider);
+        // SetUpWheelCollider(frontLeftWheelCollider);
+        // SetUpWheelCollider(frontRightWheelCollider);
+        // SetUpWheelCollider(rearLeftWheelCollider);
+        // SetUpWheelCollider(rearRightWheelCollider);
     }
 
-    private void SetUpWheelCollider(WheelCollider wheelCollider) {
-        wheelCollider.mass = 100;
-        wheelCollider.suspensionDistance = 0.2f;
-        wheelCollider.forceAppPointDistance = 0.1f;
-        wheelCollider.suspensionSpring = new JointSpring {
-            spring = 35000,
-            damper = 4500,
-            targetPosition = 0
-        };
-        wheelCollider.forwardFriction = new WheelFrictionCurve {
-            asymptoteSlip = 2,
-            asymptoteValue = 15,
-            extremumSlip = 1,
-            extremumValue = 20,
-            stiffness = 1
-        };
-    }
+    // private void SetUpWheelCollider(WheelCollider wheelCollider) {
+    //     wheelCollider.mass = 100;
+    //     wheelCollider.suspensionDistance = 0.2f;
+    //     wheelCollider.forceAppPointDistance = 0.1f;
+    //     wheelCollider.suspensionSpring = new JointSpring {
+    //         spring = 35000,
+    //         damper = 4500,
+    //         targetPosition = 0
+    //     };
+    //     wheelCollider.forwardFriction = new WheelFrictionCurve {
+    //         asymptoteSlip = 2,
+    //         asymptoteValue = 15,
+    //         extremumSlip = 1,
+    //         extremumValue = 20,
+    //         stiffness = 1
+    //     };
+    // }
 
     // Update is called once per frame
     void Update()
@@ -95,6 +98,8 @@ public class CarController : MonoBehaviour
             Debug.Log("Jumping");
             rb.AddForce(Vector3.up * jumpAmount * 1000);
             PlayJumpSFX();
+            PlayerPrefs.SetInt("TotalJumps", PlayerPrefs.GetInt("TotalJumps", 0) + 1);
+            print("jumps: " + PlayerPrefs.GetInt("TotalJumps"));
         }
 
         speedText.text = (rb.velocity.magnitude / 5).ToString("0") + " km/h";
@@ -121,8 +126,8 @@ public class CarController : MonoBehaviour
         }
 
         if (IsAirborne()) {
-            Debug.Log("Airborne");
-            rb.AddForce(transform.up * Physics.gravity.y * 5, ForceMode.Acceleration);
+            // Debug.Log("Airborne");
+            rb.AddForce(transform.up * Physics.gravity.y * 10, ForceMode.Acceleration);
             rb.AddTorque(transform.right * airControlForce * verticalInput);
             rb.AddTorque(-1 * transform.forward * airControlForce * horizontalInput);
         }
@@ -140,6 +145,10 @@ public class CarController : MonoBehaviour
             else {
                 PlayGameLostSFX();
             }
+        }
+
+        if (rb.velocity.magnitude / 5 > maxSpeed) {
+            rb.velocity = rb.velocity.normalized * maxSpeed * 5;
         }
     }
 

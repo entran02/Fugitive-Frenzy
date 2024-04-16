@@ -30586,6 +30586,7 @@ GameObject:
   - component: {fileID: 2767741686925018533}
   - component: {fileID: 8049406289602055797}
   - component: {fileID: 2357980531247112822}
+  - component: {fileID: 4969025056135508362}
   m_Layer: 0
   m_Name: HouseSection
   m_TagString: section
@@ -31016,7 +31017,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 200, y: 100, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 50, z: 0}
 --- !u!114 &2767741686925018533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31083,6 +31084,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5, y: 100, z: 1000}
   m_Center: {x: 75, y: 50, z: 500}
+--- !u!65 &4969025056135508362
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8247728700796153940}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 200, y: 5, z: 1000}
+  m_Center: {x: 0, y: 100, z: 500}
 --- !u!1 &8256831899919041932
 GameObject:
   m_ObjectHideFlags: 0

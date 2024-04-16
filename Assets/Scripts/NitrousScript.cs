@@ -30,6 +30,8 @@ public class NitrousScript : MonoBehaviour
             carController.activateNitrous(nitrousDuration);
             gameObject.SetActive(false);
             Destroy(gameObject, 3f);
+
+            PlayerPrefs.SetInt("TotalNitro", PlayerPrefs.GetInt("TotalNitro", 0) + 1);
         }
         
     }
