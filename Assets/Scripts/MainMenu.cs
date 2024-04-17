@@ -6,6 +6,7 @@ public class MainMenu : MonoBehaviour
 {
     public void StartGame() {
         SceneManager.LoadScene(1);
+        MoneyPickup.score = 0;
     }
 
     public void ExitGame() {

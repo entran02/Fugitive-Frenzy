@@ -21,7 +21,7 @@ public class FPSController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!LevelManager.isGameOver) {
+        if (!PickupLevelManager.isGameOver) {
             float moveHorizontal = Input.GetAxisRaw("Horizontal");
             float moveVertical = Input.GetAxisRaw("Vertical");
             input = (transform.right * moveHorizontal + transform.forward * moveVertical).normalized;
