@@ -3894,6 +3894,22 @@ PrefabInstance:
       propertyPath: maxSpeed
       value: 125
       objectReference: {fileID: 0}
+    - target: {fileID: 449949321263645694, guid: fe48e4ce90ca1c64293d2f8bf0daab1a, type: 3}
+      propertyPath: motorForce
+      value: 100000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1138098627385775395, guid: fe48e4ce90ca1c64293d2f8bf0daab1a, type: 3}
+      propertyPath: m_SidewaysFriction.m_Stiffness
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1138098627385775395, guid: fe48e4ce90ca1c64293d2f8bf0daab1a, type: 3}
+      propertyPath: m_SidewaysFriction.m_ExtremumValue
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1138098627385775395, guid: fe48e4ce90ca1c64293d2f8bf0daab1a, type: 3}
+      propertyPath: m_SidewaysFriction.m_AsymptoteValue
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1892740180684793027, guid: fe48e4ce90ca1c64293d2f8bf0daab1a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -700
@@ -3934,14 +3950,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2001345029523457624, guid: fe48e4ce90ca1c64293d2f8bf0daab1a, type: 3}
+      propertyPath: m_SidewaysFriction.m_Stiffness
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2001345029523457624, guid: fe48e4ce90ca1c64293d2f8bf0daab1a, type: 3}
+      propertyPath: m_SidewaysFriction.m_ExtremumValue
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2001345029523457624, guid: fe48e4ce90ca1c64293d2f8bf0daab1a, type: 3}
+      propertyPath: m_SidewaysFriction.m_AsymptoteValue
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3665310593021075766, guid: fe48e4ce90ca1c64293d2f8bf0daab1a, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3993930365503864605, guid: fe48e4ce90ca1c64293d2f8bf0daab1a, type: 3}
+      propertyPath: m_SidewaysFriction.m_Stiffness
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3993930365503864605, guid: fe48e4ce90ca1c64293d2f8bf0daab1a, type: 3}
+      propertyPath: m_SidewaysFriction.m_ExtremumValue
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3993930365503864605, guid: fe48e4ce90ca1c64293d2f8bf0daab1a, type: 3}
+      propertyPath: m_SidewaysFriction.m_AsymptoteValue
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6931197373375493698, guid: fe48e4ce90ca1c64293d2f8bf0daab1a, type: 3}
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 1496843243}
+    - target: {fileID: 7141449032048722833, guid: fe48e4ce90ca1c64293d2f8bf0daab1a, type: 3}
+      propertyPath: m_SidewaysFriction.m_Stiffness
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141449032048722833, guid: fe48e4ce90ca1c64293d2f8bf0daab1a, type: 3}
+      propertyPath: m_SidewaysFriction.m_ExtremumValue
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141449032048722833, guid: fe48e4ce90ca1c64293d2f8bf0daab1a, type: 3}
+      propertyPath: m_SidewaysFriction.m_AsymptoteValue
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -4635,6 +4687,38 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6215025321853194968, guid: e16e0917e411f4f4c8dcabf57e6c3f9b, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: c567450c33e063741acb035800711fd2, type: 3}
+    - target: {fileID: 6390436328866034205, guid: e16e0917e411f4f4c8dcabf57e6c3f9b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 06d40dc2e1401784eb420a0d2d5d7235, type: 2}
+    - target: {fileID: 7333621629565781945, guid: e16e0917e411f4f4c8dcabf57e6c3f9b, type: 3}
+      propertyPath: maxSpeed
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 7333621629565781945, guid: e16e0917e411f4f4c8dcabf57e6c3f9b, type: 3}
+      propertyPath: acceleration
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7333621629565781945, guid: e16e0917e411f4f4c8dcabf57e6c3f9b, type: 3}
+      propertyPath: initialMoveSpeed
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8787723383751618492, guid: e16e0917e411f4f4c8dcabf57e6c3f9b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8787723383751618492, guid: e16e0917e411f4f4c8dcabf57e6c3f9b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8787723383751618492, guid: e16e0917e411f4f4c8dcabf57e6c3f9b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8787723383751618492, guid: e16e0917e411f4f4c8dcabf57e6c3f9b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -681
@@ -4649,7 +4733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8787723383751618492, guid: e16e0917e411f4f4c8dcabf57e6c3f9b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8787723383751618492, guid: e16e0917e411f4f4c8dcabf57e6c3f9b, type: 3}
       propertyPath: m_LocalRotation.x
@@ -4657,7 +4741,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8787723383751618492, guid: e16e0917e411f4f4c8dcabf57e6c3f9b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8787723383751618492, guid: e16e0917e411f4f4c8dcabf57e6c3f9b, type: 3}
       propertyPath: m_LocalRotation.z
@@ -4669,11 +4753,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8787723383751618492, guid: e16e0917e411f4f4c8dcabf57e6c3f9b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8787723383751618492, guid: e16e0917e411f4f4c8dcabf57e6c3f9b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8862142723810390671, guid: e16e0917e411f4f4c8dcabf57e6c3f9b, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: c567450c33e063741acb035800711fd2, type: 3}
+    - target: {fileID: 8862142723810390671, guid: e16e0917e411f4f4c8dcabf57e6c3f9b, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8862142723810390671, guid: e16e0917e411f4f4c8dcabf57e6c3f9b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6346,7 +6442,7 @@ MonoBehaviour:
   scoreText: {fileID: 1180318006}
   resetText: {fileID: 1298148074}
   nextLevel: 
-  winDistance: 10000
+  winDistance: 20000
 --- !u!4 &888197322
 Transform:
   m_ObjectHideFlags: 0

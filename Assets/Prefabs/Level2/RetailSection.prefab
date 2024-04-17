@@ -1079,9 +1079,9 @@ MonoBehaviour:
   obstaclePrefab: {fileID: 6954263632038634872, guid: 43543cfd8a018574b851d95c04979df4, type: 3}
   nitroPrefab: {fileID: 7517985043363342541, guid: bfed1dc95c379434cb0ff38e2210dc82, type: 3}
   oilSlickPowerupPrefab: {fileID: 6737840445593820475, guid: 94338c4d006fb2343a40c18034c3851e, type: 3}
-  obstacleSpawnChance: 0.6
+  obstacleSpawnChance: 0.8
   nitroSpawnChance: 0.3
-  oilSlickPowerupSpawnChance: 0.2
+  oilSlickPowerupSpawnChance: 0.3
 --- !u!65 &2975305878009933879
 BoxCollider:
   m_ObjectHideFlags: 0
