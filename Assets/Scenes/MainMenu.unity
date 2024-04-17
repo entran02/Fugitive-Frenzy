@@ -2394,9 +2394,10 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Matthew xie - 4th year cs major
 
-    Evan tran
+    Evan tran - 4th year CECS Major
 
-    joshua cheng'
+    joshua
+    cheng - 4th year CECS Major'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 068614ac006ea424e944f12cb9f4996f, type: 2}
   m_sharedMaterial: {fileID: 3031433496009293789, guid: 068614ac006ea424e944f12cb9f4996f, type: 2}

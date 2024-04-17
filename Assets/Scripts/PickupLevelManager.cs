@@ -15,6 +15,7 @@ public class PickupLevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isGameWon = false;
         MoneyPickup.score = 0;
     }
 
