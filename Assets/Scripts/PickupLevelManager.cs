@@ -11,7 +11,6 @@ public class PickupLevelManager : MonoBehaviour
     public static bool isGameOver = false;
     public static bool isGameWon = false;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -22,15 +21,22 @@ public class PickupLevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        score.text = "Collected: " + MoneyPickup.score.ToString() + "/" + MoneyPickup.totalPickups.ToString();
-
-        if (MoneyPickup.score.ToString() == MoneyPickup.totalPickups.ToString()) {
-            isGameWon = true;
+        if (!isGameOver) {
+            score.text = "Collected: " + MoneyPickup.score.ToString() + "/" + MoneyPickup.totalPickups.ToString();
         }
+
+        // if (MoneyPickup.score.ToString() == MoneyPickup.totalPickups.ToString()) {
+
+        //     print(MoneyPickup.score.ToString());
+        //     print(MoneyPickup.totalPickups.ToString());
+        //     isGameWon = true;
+        // }
 
         if (isGameWon) {
             SceneManager.LoadScene(2);
         }
+
+
     }
 
     public void LevelLost()
