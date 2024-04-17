@@ -16,6 +16,8 @@ TagManager:
   - Pickup
   - Target
   - Home
+  - WanderPoint
+  - HealthSlider
   layers:
   - Default
   - TransparentFX

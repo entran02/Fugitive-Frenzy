@@ -7,12 +7,15 @@ using UnityEngine.SceneManagement;
 public class PickupLevelManager : MonoBehaviour
 {
     public Text score;
+    public Text gameText;
     public static bool isGameOver = false;
+    public static bool isGameWon = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        MoneyPickup.score = 0;
     }
 
     // Update is called once per frame
@@ -21,11 +24,27 @@ public class PickupLevelManager : MonoBehaviour
         score.text = "Collected: " + MoneyPickup.score.ToString() + "/" + MoneyPickup.totalPickups.ToString();
 
         if (MoneyPickup.score.ToString() == MoneyPickup.totalPickups.ToString()) {
-            isGameOver = true;
+            isGameWon = true;
         }
 
-        if (isGameOver) {
+        if (isGameWon) {
             SceneManager.LoadScene(2);
         }
+    }
+
+    public void LevelLost()
+    {
+        isGameOver = true;
+        gameText.color = Color.red;
+        gameText.text = "BUSTED!";
+        gameText.gameObject.SetActive(true);
+
+        Invoke("LoadCurrentLevel", 2);
+    }
+
+    void LoadCurrentLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        isGameOver = false;
     }
 }
