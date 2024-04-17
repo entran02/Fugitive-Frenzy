@@ -6,6 +6,7 @@ public class MainMenu : MonoBehaviour
 {
     public void StartGame() {
         MoneyPickup.score = 0;
+        MoneyPickup.totalPickups = 0;
         SceneManager.LoadScene(1);
     }
 
