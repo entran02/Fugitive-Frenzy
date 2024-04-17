@@ -686,7 +686,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7333621629565781945, guid: e16e0917e411f4f4c8dcabf57e6c3f9b, type: 3}
       propertyPath: maxSpeed
-      value: 300
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 7333621629565781945, guid: e16e0917e411f4f4c8dcabf57e6c3f9b, type: 3}
       propertyPath: m_Enabled
@@ -698,7 +698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7333621629565781945, guid: e16e0917e411f4f4c8dcabf57e6c3f9b, type: 3}
       propertyPath: initialMoveSpeed
-      value: 35
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7333621629565781945, guid: e16e0917e411f4f4c8dcabf57e6c3f9b, type: 3}
       propertyPath: rubberBandMaxSpeed
@@ -1512,7 +1512,7 @@ MonoBehaviour:
   scoreText: {fileID: 1180318006}
   resetText: {fileID: 1298148074}
   nextLevel: Level2
-  winDistance: 5000
+  winDistance: 10000
 --- !u!4 &888197322
 Transform:
   m_ObjectHideFlags: 0
@@ -2846,7 +2846,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1138098627385775395, guid: fe48e4ce90ca1c64293d2f8bf0daab1a, type: 3}
       propertyPath: m_SidewaysFriction.m_ExtremumValue
-      value: 10
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1138098627385775395, guid: fe48e4ce90ca1c64293d2f8bf0daab1a, type: 3}
+      propertyPath: m_SidewaysFriction.m_AsymptoteValue
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1892740180684793027, guid: fe48e4ce90ca1c64293d2f8bf0daab1a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2890,7 +2894,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2001345029523457624, guid: fe48e4ce90ca1c64293d2f8bf0daab1a, type: 3}
       propertyPath: m_SidewaysFriction.m_ExtremumValue
-      value: 10
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2001345029523457624, guid: fe48e4ce90ca1c64293d2f8bf0daab1a, type: 3}
+      propertyPath: m_SidewaysFriction.m_AsymptoteValue
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3665310593021075766, guid: fe48e4ce90ca1c64293d2f8bf0daab1a, type: 3}
       propertyPath: m_Name
@@ -2898,7 +2906,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3993930365503864605, guid: fe48e4ce90ca1c64293d2f8bf0daab1a, type: 3}
       propertyPath: m_SidewaysFriction.m_ExtremumValue
-      value: 10
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3993930365503864605, guid: fe48e4ce90ca1c64293d2f8bf0daab1a, type: 3}
+      propertyPath: m_SidewaysFriction.m_AsymptoteValue
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6931197373375493698, guid: fe48e4ce90ca1c64293d2f8bf0daab1a, type: 3}
       propertyPath: healthSlider
@@ -2906,7 +2918,11 @@ PrefabInstance:
       objectReference: {fileID: 1496843243}
     - target: {fileID: 7141449032048722833, guid: fe48e4ce90ca1c64293d2f8bf0daab1a, type: 3}
       propertyPath: m_SidewaysFriction.m_ExtremumValue
-      value: 10
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7141449032048722833, guid: fe48e4ce90ca1c64293d2f8bf0daab1a, type: 3}
+      propertyPath: m_SidewaysFriction.m_AsymptoteValue
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
