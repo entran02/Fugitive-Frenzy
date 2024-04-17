@@ -25,5 +25,6 @@ public class MoneyPickup : MonoBehaviour
         // }
         score++;
         Destroy(gameObject);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>().Play();
     }
 }
