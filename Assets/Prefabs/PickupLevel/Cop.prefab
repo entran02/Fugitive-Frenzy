@@ -41,7 +41,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: cd0eb8c0930c6cc4596549e2c7703d1e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -29.1
+      value: -33.15
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cd0eb8c0930c6cc4596549e2c7703d1e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -49,11 +49,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cd0eb8c0930c6cc4596549e2c7703d1e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -113.5
+      value: -72.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cd0eb8c0930c6cc4596549e2c7703d1e, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cd0eb8c0930c6cc4596549e2c7703d1e, type: 3}
       propertyPath: m_LocalRotation.x
@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cd0eb8c0930c6cc4596549e2c7703d1e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cd0eb8c0930c6cc4596549e2c7703d1e, type: 3}
       propertyPath: m_LocalRotation.z
@@ -73,7 +73,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cd0eb8c0930c6cc4596549e2c7703d1e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cd0eb8c0930c6cc4596549e2c7703d1e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -104,45 +104,19 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cd0eb8c0930c6cc4596549e2c7703d1e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4718822572187337079}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cd0eb8c0930c6cc4596549e2c7703d1e, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 8836646694269399656}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cd0eb8c0930c6cc4596549e2c7703d1e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3879707978770271213}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cd0eb8c0930c6cc4596549e2c7703d1e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3018816371264480261}
+      addedObject: {fileID: 1645820915322747573}
   m_SourcePrefab: {fileID: 100100000, guid: cd0eb8c0930c6cc4596549e2c7703d1e, type: 3}
 --- !u!1 &6384022413478619236 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cd0eb8c0930c6cc4596549e2c7703d1e, type: 3}
   m_PrefabInstance: {fileID: 6078156758332429621}
   m_PrefabAsset: {fileID: 0}
---- !u!136 &4718822572187337079
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6384022413478619236}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!195 &8836646694269399656
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -157,7 +131,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -185,7 +159,8 @@ MonoBehaviour:
   damageAmount: 20
   enemyEyes: {fileID: 5993118314309086879}
   fieldOfView: 60
---- !u!136 &3018816371264480261
+  kickSFX: {fileID: 8300000, guid: b3fce92c39443324f8660ccb2d15b93f, type: 3}
+--- !u!136 &1645820915322747573
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -200,14 +175,14 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 1
+  m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!4 &7362177210994812939 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5588326719299175106, guid: cd0eb8c0930c6cc4596549e2c7703d1e, type: 3}

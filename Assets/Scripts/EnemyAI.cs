@@ -9,7 +9,8 @@ public class EnemyAI : MonoBehaviour
     {
         Idle,
         Patrol,
-        Chase
+        Chase,
+        Attack
     }
 
     public FSMStates currentState;
@@ -32,6 +33,9 @@ public class EnemyAI : MonoBehaviour
 
     public Transform enemyEyes;
     public float fieldOfView = 60f;
+    Animator animator;
+
+    public AudioClip kickSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +45,7 @@ public class EnemyAI : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
 
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
 
         Initialize();
     }
@@ -58,9 +63,16 @@ public class EnemyAI : MonoBehaviour
             case FSMStates.Chase:
                 UpdateChaseState();
                 break;
+            case FSMStates.Attack:
+                UpdateAttackState();
+                break;
         }
 
         elapsedTime += Time.deltaTime;
+
+        if (PickupLevelManager.isGameOver) {
+            Destroy(gameObject);
+        }
     }
 
     void Initialize()
@@ -93,6 +105,8 @@ public class EnemyAI : MonoBehaviour
     void UpdateChaseState()
     {
         //anim.SetInteger("animState", 2);
+       animator.SetBool("attack", false);  
+
 
         nextDestination = player.transform.position;
 
@@ -103,10 +117,30 @@ public class EnemyAI : MonoBehaviour
             FindNextPoint();
             currentState = FSMStates.Patrol;
         }
+        if (distanceToPlayer <= attackDistance) {
+            currentState = FSMStates.Attack;
+        }
 
         FaceTarget(nextDestination);
 
         agent.SetDestination(nextDestination);
+    }
+
+    void UpdateAttackState() {
+       agent.isStopped = true;
+       animator.SetBool("attack", true);  
+
+       FaceTarget(GameObject.FindGameObjectWithTag("Player").transform.position);
+
+       if (distanceToPlayer <= attackDistance) {
+            currentState = FSMStates.Attack;
+        }
+        else if (distanceToPlayer > attackDistance && distanceToPlayer <= chaseDistance) {
+            currentState = FSMStates.Chase;
+        }
+        else if (distanceToPlayer > chaseDistance) {
+            currentState = FSMStates.Patrol;
+        }
     }
 
     void FindNextPoint()
@@ -147,13 +181,10 @@ public class EnemyAI : MonoBehaviour
         return false;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.CompareTag("Player"))
-        {
-            var playerHealth = other.GetComponent<PlayerHealth>();
-            playerHealth.TakeDamage(damageAmount);
-        }
+    void takeDamage() {
+        var playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
+        playerHealth.TakeDamage(damageAmount);
+        AudioSource.PlayClipAtPoint(kickSFX, transform.position);
     }
 
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Schema;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,11 +21,19 @@ public class MoneyPickup : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        // if (other.CompareTag("Player")) {
-        //     SceneManager.LoadScene(2);
-        // }
+
         score++;
         Destroy(gameObject);
         GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>().Play();
     }
+
+    private void OnDestroy() {
+        if (!PickupLevelManager.isGameOver) {
+            if (score == totalPickups) {
+                PickupLevelManager.isGameWon = true;
+            }
+        }
+    }
+
+
 }
